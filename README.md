@@ -77,6 +77,24 @@ I think it is better to set it in `scripts` in `package.json`.
      "start": "next start"
 ```
 
+### `eslint-plugin-tailwindcss`
+
+```
+% npm install -D eslint-plugin-tailwindcss
+```
+
+Update `.eslintrc.json`.
+
+```diff
+ {
+-  "extends": "next/core-web-vitals"
++  "extends": [
++    "next/core-web-vitals",
++    "plugin:tailwindcss/recommended"
++  ]
+ }
+ ```
+
 ## links
 
 * https://tailwindcss.com/docs/guides/nextjs
