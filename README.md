@@ -63,9 +63,11 @@ Created PostCSS config file: postcss.config.js
 % npx next lint
 ```
 
-The first time you run it, it will install eslint and other pakcage.
+(I just ran it and it was set from the beginning, so it may not be necessary.)
 
-I think it is better to set it in `scripts` in `package.json`.
+~~The first time you run it, it will install eslint and other pakcage.~~
+
+~~I think it is better to set it in `scripts` in `package.json`.~~
 
 ```diff
    "version": "0.1.0",
