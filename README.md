@@ -57,6 +57,25 @@ Created PostCSS config file: postcss.config.js
 ```
 % rm styles/globals.css
 ```
+## Lint
+
+```
+% npx next lint
+```
+
+The first time you run it, it will install eslint and other pakcage.
+
+I think it is better to set it in `scripts` in `package.json`.
+
+```diff
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
++    "lint": "next lint",
+     "dev": "next dev",
+     "build": "next build",
+     "start": "next start"
+```
 
 ## links
 
