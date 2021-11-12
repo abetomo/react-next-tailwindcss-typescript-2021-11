@@ -95,7 +95,90 @@ Update `.eslintrc.json`.
 +    "plugin:tailwindcss/recommended"
 +  ]
  }
- ```
+```
+
+## SSG
+
+Run `next export` to create a static files.
+
+### Example of `scripts` setting in `package.json`
+
+```diff
+   "private": true,
+   "scripts": {
+     "lint": "next lint",
+-    "dev": "next dev",
+-    "build": "next build",
++    "clean": "rm -rf ./.next",
++    "dev": "npm run clean && next dev",
++    "build": "npm run clean && next build",
++    "export": "npm run build && next export",
+     "start": "next start"
+   },
+   "dependencies": {
+```
+
+### `next/image`
+
+You will get the following error.
+Fix some files.
+
+```
+Error: Image Optimization using Next.js' default loader is not compatible with `next export`.
+```
+
+#### `pages/index.tsx`
+
+```diff
+ import Head from 'next/head'
+-import Image from 'next/image'
++// import Image from 'next/image'
+ import styles from '../styles/Home.module.css'
+
+ export default function Home() {
+```
+
+```diff
+         >
+           Powered by{' '}
+           <span className={styles.logo}>
+-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
++            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+           </span>
+         </a>
+       </footer>
+```
+
+#### `.eslintrc.json`
+
+```diff
+@@ -2,5 +2,8 @@
+   "extends": [
+     "next/core-web-vitals",
+     "plugin:tailwindcss/recommended"
+-  ]
++  ],
++  "rules": {
++    "@next/next/no-img-element": "off"
++  }
+ }
+```
+
+Fixed for the following warning.
+
+```
+Warning: Do not use <img>. Use Image from 'next/image' instead. See https://nextjs.org/docs/messages/no-img-element.  @next/next/no-img-element
+```
+
+### Note
+
+In Node.js 17, the following error.
+
+```
+HookWebpackError: error:0308010C:digital envelope routines::unsupported
+```
+
+(It was tested with Node.js 16.)
 
 ## links
 
